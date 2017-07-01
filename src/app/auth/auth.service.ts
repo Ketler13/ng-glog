@@ -1,20 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
+import 'rxjs/add/operator/map';
+
+import { User } from './user';
+
 @Injectable()
 export class AuthService {
   //private BASE_URL: string = 'http://ketler-glog.herokuapp.com/api/';
   private BASE_URL = 'http://127.0.0.1:3000/api/';
   private headers: Headers;
+  isLoggedIn: boolean;
+  user: User;
+  token: string;
 
   constructor(private http: Http) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.isLoggedIn = false;
   }
 
   login(data) {
     const url = this.BASE_URL + 'login';
-    this.http.post(url, data, this.headers)
-      .subscribe(console.log);
+    return this.http.post(url, data, this.headers)
+      .map(res => {
+        const data = res.json();
+        if (!data.success) { return false }
+        this.isLoggedIn = true;
+        this.user = data.user;
+        this.token = data.token;
+        return true;
+      });
   }
 
   register(data) {
