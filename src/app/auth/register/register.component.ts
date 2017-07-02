@@ -15,6 +15,7 @@ import { AuthService } from '../auth.service';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   emailError: string = null;
+  nameError: string = null;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
     this.createForm();
@@ -43,6 +44,22 @@ export class RegisterComponent implements OnInit {
           });
         } else {
           this.emailError = null;
+        }
+      });
+
+      this.registerForm.controls.name.valueChanges
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .filter(val => val.length)
+      .switchMap(name => this.auth.checkNameUnqique(name))
+      .subscribe(res => {
+        if (!res) {
+          this.nameError = 'Name is already in use';
+          this.registerForm.controls.name.setErrors({
+            unique: 'name is already in use'
+          });
+        } else {
+          this.nameError = null;
         }
       });
   }

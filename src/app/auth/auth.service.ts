@@ -57,4 +57,11 @@ export class AuthService {
       .map(res => res.json().success ? true : false);
   }
 
+  checkNameUnqique(name: string) {
+    const url = this.BASE_URL + 'checkName';
+    return this.http
+      .post(url, {name}, this.headers)
+      .map(res => res.json().success ? true : false);
+  }
+
 }
