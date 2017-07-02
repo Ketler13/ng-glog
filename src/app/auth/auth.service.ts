@@ -50,4 +50,11 @@ export class AuthService {
     this.loginChecker.next(false);
   }
 
+  checkEmailUnique(email: string) {
+    const url = this.BASE_URL + 'checkEmail';
+    return this.http
+      .post(url, {email}, this.headers)
+      .map(res => res.json().success ? true : false);
+  }
+
 }

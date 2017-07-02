@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
+
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,6 +14,7 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
+  emailError: string = null;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
     this.createForm();
@@ -24,6 +29,22 @@ export class RegisterComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    this.registerForm.controls.email.valueChanges
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .filter(val => val.length)
+      .switchMap(email => this.auth.checkEmailUnique(email))
+      .subscribe(res => {
+        if (!res) {
+          this.emailError = 'Email is already in use';
+          this.registerForm.controls.email.setErrors({
+            unique: 'email is already in use'
+          });
+        } else {
+          this.emailError = null;
+        }
+      });
   }
 
   allInputsFilled() {
@@ -32,6 +53,10 @@ export class RegisterComponent implements OnInit {
       && !this.registerForm.controls.email.errors
       && !this.registerForm.controls.password.errors
     )
+  }
+
+  checkEmailUnique(formControl) {
+    return this.auth.checkEmailUnique(formControl.value);
   }
 
   submit() {

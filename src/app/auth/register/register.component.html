@@ -1,14 +1,17 @@
 <div>
   <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate="">
     <md-input-container class="fullwidth">
+      <md-error>name is required</md-error>
       <input mdInput type="text" placeholder="name" formControlName="name">
     </md-input-container>
     <br>
     <md-input-container class="fullwidth">
+      <md-error>{{emailError || "Email is required"}}</md-error>
       <input mdInput type="email" placeholder="email" formControlName="email">
     </md-input-container>
     <br>
     <md-input-container class="fullwidth">
+      <md-error>password is required</md-error>
       <input mdInput type="password" placeholder="password" formControlName="password">
     </md-input-container>
     <br>
