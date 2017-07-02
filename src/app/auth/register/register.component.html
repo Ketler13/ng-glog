@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate="">
+  <form [formGroup]="registerForm" (ngSubmit)="submit()" novalidate="">
     <md-input-container class="fullwidth">
       <input mdInput type="text" placeholder="name" formControlName="name">
     </md-input-container>
@@ -12,6 +12,8 @@
       <input mdInput type="password" placeholder="password" formControlName="password">
     </md-input-container>
     <br>
-    <button md-raised-button color="accent" type="submit">Sign up</button>
+    <button md-raised-button color="accent" type="submit" [disabled]="!allInputsFilled()">
+      Sign up
+    </button>
   </form>
 </div>

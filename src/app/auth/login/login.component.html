@@ -1,13 +1,18 @@
 <div>
   <form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate="">
     <md-input-container class="fullwidth">
+      <md-error>email is required</md-error>
       <input mdInput type="email" placeholder="email" formControlName="email">
     </md-input-container>
     <br>
     <md-input-container class="fullwidth">
+      <md-error>password is required</md-error>
       <input mdInput type="password" placeholder="password" formControlName="password">
     </md-input-container>
     <br>
-    <button md-raised-button color="primary" type="submit">Log in</button>
+    <p *ngIf="error" class="error">{{error}}</p>
+    <button md-raised-button color="primary" type="submit" [disabled]="!allInputsFilled()">
+      Log in
+    </button>
   </form>
 </div>
