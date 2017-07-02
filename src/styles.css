@@ -60,3 +60,9 @@ a {
 ul, li {
 	list-style-type: none;
 }
+
+/*my styles*/
+
+.fullwidth {
+	width: 100%;
+}

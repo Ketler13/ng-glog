@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, Route } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdToolbarModule, MdButtonModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MdToolbarModule, MdButtonModule, MdInputModule, MdTabsModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -15,14 +15,15 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { LoginComponent } from './auth/login/login.component';
 
 import { AuthService } from './auth/auth.service';
+import { AuthGuardService } from './auth/auth-guard.service';
 import { RegisterComponent } from './auth/register/register.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: AuthComponent },
-  { path: 'newsplit', component: NewSplitComponent },
-  { path: 'splits', component: SplitsComponent },
-  { path: 'excercises', component: ExcercisesComponent }
+  { path: 'newsplit', component: NewSplitComponent, canActivate: [AuthGuardService] },
+  { path: 'splits', component: SplitsComponent, canActivate: [AuthGuardService] },
+  { path: 'excercises', component: ExcercisesComponent, canActivate: [AuthGuardService] }
 ]
 
 @NgModule({
@@ -38,13 +39,16 @@ const routes: Route[] = [
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
     MdToolbarModule,
-    MdButtonModule
+    MdButtonModule,
+    MdInputModule,
+    MdTabsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

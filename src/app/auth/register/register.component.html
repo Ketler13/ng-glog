@@ -1,8 +1,17 @@
 <div>
   <form [formGroup]="loginForm" (ngSubmit)="submit()" novalidate="">
-    <input type="text" formControlName="name">
-    <input type="email" formControlName="email">
-    <input type="password" formControlName="password">
-    <input type="submit" value="Sign up">
+    <md-input-container class="fullwidth">
+      <input mdInput type="text" placeholder="name" formControlName="name">
+    </md-input-container>
+    <br>
+    <md-input-container class="fullwidth">
+      <input mdInput type="email" placeholder="email" formControlName="email">
+    </md-input-container>
+    <br>
+    <md-input-container class="fullwidth">
+      <input mdInput type="password" placeholder="password" formControlName="password">
+    </md-input-container>
+    <br>
+    <button md-raised-button color="accent" type="submit">Sign up</button>
   </form>
 </div>
