@@ -3,5 +3,6 @@
   <a md-button routerLink="splits">YOUR SPLITS</a>
   <a md-button routerLink="excercises">EXCERCISES</a>
   <span class="fill-space"></span>
-  <a md-button color="accent" routerLink="login">Log in / Sign up</a>
+  <a md-button *ngIf="!isLoggedIn" color="accent" routerLink="login">Log in / Sign up</a>
+  <a md-button *ngIf="isLoggedIn" (click)="logOut()">Log out</a>
 </md-toolbar>
