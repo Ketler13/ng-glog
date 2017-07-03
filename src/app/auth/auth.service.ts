@@ -68,4 +68,8 @@ export class AuthService {
       .map(res => res.json().success ? true : false);
   }
 
+  getToken() {
+    return this.token;
+  }
+
 }
