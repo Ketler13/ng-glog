@@ -39,8 +39,12 @@ export class AuthService {
 
   register(data) {
     const url = this.BASE_URL + 'register';
-    this.http.post(url, data, this.headers)
-      .subscribe(console.log);
+    return this.http.post(url, data, this.headers)
+      .map(res => {
+        const data = res.json();
+        if (!data.success) { return false }
+        return true;
+      })
   }
 
   logout() {

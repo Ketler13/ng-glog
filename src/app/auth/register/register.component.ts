@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   emailError: string = null;
   nameError: string = null;
+  userWasCreated: boolean = null;
 
   constructor(private fb: FormBuilder, private auth: AuthService) {
     this.createForm();
@@ -72,12 +73,11 @@ export class RegisterComponent implements OnInit {
     )
   }
 
-  checkEmailUnique(formControl) {
-    return this.auth.checkEmailUnique(formControl.value);
-  }
-
   submit() {
-    this.auth.register(this.registerForm.value);
+    this.auth.register(this.registerForm.value)
+      .subscribe(res => {
+        this.userWasCreated = res ? true  : false;
+      });
   }
 
 }

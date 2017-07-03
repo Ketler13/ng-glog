@@ -18,5 +18,6 @@
     <button md-raised-button color="accent" type="submit" [disabled]="!allInputsFilled()">
       Sign up
     </button>
+    <p *ngIf="userWasCreated">User was created.</p>
   </form>
 </div>
