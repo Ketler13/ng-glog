@@ -1,0 +1,4 @@
+<li>
+  <p (click)="toggleBody()">{{excercise.title}}</p>
+  <p *ngIf="isOpen">{{excercise.text}}</p>
+</li>

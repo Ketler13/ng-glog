@@ -1,3 +1,6 @@
-<p>
-  excercises works!
-</p>
+<div >
+  <p *ngIf="loadingError">{{loadingError}}</p>
+  <ul *ngIf="excercises">
+    <app-excercise *ngFor="let excercise of excercises" [excercise]="excercise"></app-excercise>
+  </ul>
+</div>

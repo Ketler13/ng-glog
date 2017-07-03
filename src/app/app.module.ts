@@ -17,6 +17,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { RegisterComponent } from './auth/register/register.component';
+import { ExcerciseComponent } from './excercises/excercise/excercise.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -35,7 +36,8 @@ const routes: Route[] = [
     ExcercisesComponent,
     MainNavComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    ExcerciseComponent
   ],
   imports: [
     BrowserModule,

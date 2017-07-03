@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ExcerciseService } from './excercise.service';
+import { Excercise } from './excercise';
 
 @Component({
   selector: 'app-excercises',
@@ -8,11 +10,22 @@ import { ExcerciseService } from './excercise.service';
   providers: [ExcerciseService]
 })
 export class ExcercisesComponent implements OnInit {
+  loadingError: boolean = false;
+  excercises: Excercise[];
 
   constructor(private excerciseService: ExcerciseService) { }
 
   ngOnInit() {
-    this.excerciseService.getExcercises();
+    this.excercises = null;
+    this.excerciseService.getExcercises()
+      .subscribe(excercises => {
+        if (!excercises) {
+          this.loadingError = true;
+        } else {
+          this.excercises = excercises;
+          this.loadingError = false;
+        }
+      });
   }
 
 }
