@@ -70,3 +70,8 @@ ul, li {
 .error {
 	color: red;
 }
+
+.excercises-component {
+	width: 80%;
+	margin: 0 auto;
+}

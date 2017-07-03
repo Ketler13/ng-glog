@@ -1,6 +1,14 @@
-<div >
+<div class="excercises-component">
+  <app-new-excercise-creator (excerciseWasCreated)="loadExcercises()"></app-new-excercise-creator>
   <p *ngIf="loadingError">{{loadingError}}</p>
-  <ul *ngIf="excercises">
-    <app-excercise *ngFor="let excercise of excercises" [excercise]="excercise"></app-excercise>
+  <!-- <md-list *ngIf="excercises" cols="2" rowHeight="2:1">
+    <md-list-item *ngFor="let excercise of excercises">
+      <app-excercise [excercise]="excercise"></app-excercise>
+    </md-list-item>
+  </md-list> -->
+  <ul *ngIf="excercises" cols="2" rowHeight="2:1">
+    <li *ngFor="let excercise of excercises" class="excercise-item">
+      <app-excercise [excercise]="excercise"></app-excercise>
+    </li>
   </ul>
 </div>

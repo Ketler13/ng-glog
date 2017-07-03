@@ -1,4 +1,4 @@
-<li>
-  <p (click)="toggleBody()">{{excercise.title}}</p>
-  <p *ngIf="isOpen">{{excercise.text}}</p>
-</li>
+<md-card>
+  <md-card-title (click)="toggleBody()">{{excercise.title}}</md-card-title>
+  <md-card-content *ngIf="isOpen">{{excercise.text}}</md-card-content>
+</md-card>

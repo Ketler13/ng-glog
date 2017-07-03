@@ -1,0 +1,21 @@
+<div>
+  <button md-button class="fullwidth" color="accent" type="button" (click)="toggleForm()">
+    {{isOpen ? 'Close form' : 'Open form'}}
+  </button>
+  <form *ngIf="isOpen" [formGroup]="newExcerciseForm" (ngSubmit)="submit()" novalidate="">
+    <md-input-container class="fullwidth">
+      <md-error>{{uniqueError || 'title is required'}}</md-error>
+      <input mdInput type="text" placeholder="title" formControlName="title">
+    </md-input-container>
+    <br>
+    <md-input-container class="fullwidth">
+      <md-error>description is required</md-error>
+      <input mdInput type="text" placeholder="decription" formControlName="text">
+    </md-input-container>
+    <br>
+    <p *ngIf="error" class="error">{{error}}</p>
+    <button md-raised-button class="fullwidth" color="accent" type="submit" [disabled]="!allInputsFilled()">
+      Create
+    </button>
+  </form>
+</div>

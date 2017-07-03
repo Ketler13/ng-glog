@@ -4,7 +4,10 @@ import { RouterModule, Routes, Route } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdToolbarModule, MdButtonModule, MdInputModule, MdTabsModule } from '@angular/material';
+import {
+  MdToolbarModule, MdButtonModule, MdInputModule, MdTabsModule, MdListModule,
+  MdCardModule, MdGridListModule
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -18,6 +21,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { RegisterComponent } from './auth/register/register.component';
 import { ExcerciseComponent } from './excercises/excercise/excercise.component';
+import { NewExcerciseCreatorComponent } from './excercises/new-excercise-creator/new-excercise-creator.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -37,7 +41,8 @@ const routes: Route[] = [
     MainNavComponent,
     LoginComponent,
     RegisterComponent,
-    ExcerciseComponent
+    ExcerciseComponent,
+    NewExcerciseCreatorComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,10 @@ const routes: Route[] = [
     MdToolbarModule,
     MdButtonModule,
     MdInputModule,
-    MdTabsModule
+    MdTabsModule,
+    MdListModule,
+    MdCardModule,
+    MdGridListModule
   ],
   providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]

@@ -17,6 +17,10 @@ export class ExcercisesComponent implements OnInit {
 
   ngOnInit() {
     this.excercises = null;
+    this.loadExcercises();
+  }
+
+  loadExcercises() {
     this.excerciseService.getExcercises()
       .subscribe(excercises => {
         if (!excercises) {
