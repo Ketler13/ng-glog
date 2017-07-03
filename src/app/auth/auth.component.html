@@ -1,8 +1,8 @@
-<md-tab-group class="auth-tabs">
+<md-tab-group class="auth-tabs" [selectedIndex]="selectedIndex">
   <md-tab label="Log in">
     <app-login></app-login>
   </md-tab>
   <md-tab label="Sign up">
-    <app-register></app-register>
+    <app-register (changeTabIndex)="goToLogin()"></app-register>
   </md-tab>
 </md-tab-group>

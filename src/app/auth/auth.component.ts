@@ -6,6 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+  selectedIndex = 1;
+
+  goToLogin() {
+    this.selectedIndex = 0;
+  }
 
   constructor() { }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -13,6 +13,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  @Output() changeTabIndex = new EventEmitter<null>();
   registerForm: FormGroup;
   emailError: string = null;
   nameError: string = null;
@@ -77,6 +78,7 @@ export class RegisterComponent implements OnInit {
     this.auth.register(this.registerForm.value)
       .subscribe(res => {
         this.userWasCreated = res ? true  : false;
+        setTimeout(() => this.changeTabIndex.emit(), 1000)
       });
   }
 
