@@ -12,6 +12,7 @@ import { Excercise } from '../excercises/excercise';
 export class NewSplitComponent implements OnInit {
   splitForm: FormGroup;
   excercises: Excercise[];
+  formArrayHelper = [];
 
   constructor(
     private excerciseService: ExcerciseService,
@@ -43,8 +44,13 @@ export class NewSplitComponent implements OnInit {
     if (data.checked) {
       this.excercisesArray.push(this.fb.group({
         weight: '',
-        times: ''
-      }))
+        times: '',
+        id: data.id
+      }));
+      this.formArrayHelper.push(data.id);
+    } else {
+      const index = this.formArrayHelper.indexOf(data.id);
+      const element = this.excercisesArray.removeAt(index);
     }
   }
 
