@@ -1,0 +1,7 @@
+<div>
+  <ul>
+    <li *ngFor="let excercise of excercises" class="selector-excercise">
+      <md-checkbox (change)="handleChecking($event.checked, excercise.id)">{{excercise.title}}</md-checkbox>
+    </li>
+  </ul>
+</div>

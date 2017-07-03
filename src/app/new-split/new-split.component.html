@@ -1,3 +1,20 @@
-<p>
-  new-split works!
-</p>
+<div class="new-split-component">
+  <app-selector
+    [excercises]="excercises"
+    (emitChecking)="handleSet($event)"
+  >
+  </app-selector>
+  <div [formGroup]="splitForm">
+    <div formArrayName="excercisesArray">
+      <form *ngFor="let excercise of excercisesArray.controls; let i=index" [formGroupName]="i">
+        <md-input-container class="fullwidth">
+          <input formControlName="weight" mdInput type="password" placeholder="password">
+        </md-input-container>
+        <md-input-container class="fullwidth">
+          <input formControlName="times" mdInput type="password" placeholder="password">
+        </md-input-container>
+      </form>
+    </div>
+    <button type="button" (click)="log()">click</button>
+  </div>
+</div>

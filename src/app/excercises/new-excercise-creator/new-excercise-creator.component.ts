@@ -43,7 +43,7 @@ export class NewExcerciseCreatorComponent implements OnInit {
       .switchMap(title => this.excerciseService.checkTitleUnique(title))
       .subscribe(res => {
         if (!res) {
-          this.uniqueError = 'email is already in use';
+          this.uniqueError = 'title is already in use';
           this.newExcerciseForm.controls.title.setErrors({
             unique: 'excercise already exists'
           });

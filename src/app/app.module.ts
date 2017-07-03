@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdToolbarModule, MdButtonModule, MdInputModule, MdTabsModule, MdListModule,
-  MdCardModule, MdGridListModule
+  MdCardModule, MdGridListModule, MdCheckboxModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -16,12 +16,14 @@ import { SplitsComponent } from './splits/splits.component';
 import { ExcercisesComponent } from './excercises/excercises.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LoginComponent } from './auth/login/login.component';
-
-import { AuthService } from './auth/auth.service';
-import { AuthGuardService } from './auth/auth-guard.service';
 import { RegisterComponent } from './auth/register/register.component';
 import { ExcerciseComponent } from './excercises/excercise/excercise.component';
 import { NewExcerciseCreatorComponent } from './excercises/new-excercise-creator/new-excercise-creator.component';
+import { SelectorComponent } from './new-split/selector/selector.component';
+
+import { AuthService } from './auth/auth.service';
+import { AuthGuardService } from './auth/auth-guard.service';
+import { ExcerciseService } from './excercises/excercise.service';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -42,7 +44,8 @@ const routes: Route[] = [
     LoginComponent,
     RegisterComponent,
     ExcerciseComponent,
-    NewExcerciseCreatorComponent
+    NewExcerciseCreatorComponent,
+    SelectorComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +59,10 @@ const routes: Route[] = [
     MdTabsModule,
     MdListModule,
     MdCardModule,
-    MdGridListModule
+    MdGridListModule,
+    MdCheckboxModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, ExcerciseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

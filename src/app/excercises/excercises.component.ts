@@ -6,8 +6,7 @@ import { Excercise } from './excercise';
 @Component({
   selector: 'app-excercises',
   templateUrl: './excercises.component.html',
-  styleUrls: ['./excercises.component.css'],
-  providers: [ExcerciseService]
+  styleUrls: ['./excercises.component.css']
 })
 export class ExcercisesComponent implements OnInit {
   loadingError: boolean = false;
