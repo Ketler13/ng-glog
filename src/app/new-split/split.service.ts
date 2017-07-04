@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 
@@ -11,14 +12,16 @@ import { Excercise } from './excercise';
 @Injectable()
 export class SplitService {
   private token: string;
-  private userName: string;
+  private userId: string;
+  chipsHandler$$: Subject<Excercise[]>;
   excercises;
   split;
 
   constructor(private http: Http, private authService: AuthService) {
     this.token = this.authService.getToken();
-    this.userName = this.authService.getUserName();
+    this.userId = this.authService.getUserId();
     this.excercises = [];
+    this.chipsHandler$$ = new Subject();
   }
 
   addSetToService(data) {
@@ -31,7 +34,7 @@ export class SplitService {
       excercise => excercise.name === data.title
     );
     if (!excerciseInArray) {
-      this.excercises.push(set)
+      this.excercises.push(set);
     } else {
       this.excercises = this.excercises.map(
         e => (
@@ -40,11 +43,28 @@ export class SplitService {
           : e
         )
       );
-    };
+    }
+    this.chipsHandler$$.next(this.excercises);
+  }
+
+  prepareSplit() {
+    const now = new Date();
+    const date = now.toLocaleDateString();
+    return {
+      excercises: this.excercises,
+      mark: '0',
+      date,
+      user: this.userId
+    }
   }
 
   addSplit() {
-    console.log(this.excercises);
+    const split = this.prepareSplit();
+    console.log(split);
+  }
+
+  clearSet() {
+    this.excercises = [];
   }
 
 }

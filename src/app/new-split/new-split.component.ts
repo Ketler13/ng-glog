@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { SplitService } from './split.service';
@@ -8,10 +8,9 @@ import { Excercise } from '../excercises/excercise';
 @Component({
   selector: 'app-new-split',
   templateUrl: './new-split.component.html',
-  styleUrls: ['./new-split.component.css'],
-  providers: [SplitService]
+  styleUrls: ['./new-split.component.css']
 })
-export class NewSplitComponent implements OnInit {
+export class NewSplitComponent implements OnInit, OnDestroy {
   splitForm: FormGroup;
   excercises: Excercise[];
   formArrayHelper = [];
@@ -26,6 +25,10 @@ export class NewSplitComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadExcercises();
+  }
+
+  ngOnDestroy() {
+    this.splitService.clearSet();
   }
 
   createForm() {

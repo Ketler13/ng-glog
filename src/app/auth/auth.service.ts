@@ -72,8 +72,8 @@ export class AuthService {
     return this.token;
   }
 
-  getUserName() {
-    return this.user.name;
+  getUserId() {
+    return this.user.id;
   }
 
 }

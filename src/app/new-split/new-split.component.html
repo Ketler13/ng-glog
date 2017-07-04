@@ -4,27 +4,26 @@
     (emitChecking)="handleSet($event)"
   >
   </app-selector>
+  <app-chips></app-chips>
   <div [formGroup]="splitForm">
+    <button (click)="addSplit()" md-raised-button color="accent" class="fullwidth">Add split to diary</button>
     <div formArrayName="excercisesArray" class="form-container-flex">
-      <button (click)="addSplit()" md-raised-button color="accent" class="fullwidth">Add split to diary</button>
       <form
         *ngFor="let excercise of excercisesArray.controls; let i=index"
         [formGroupName]="i" class="form-flex"
         novalidate
       >
         <h3>{{excercise.value.title}}</h3>
-        <label for="weight">weight</label>
         <md-slider
           class="fullwidth" #weight formControlName="weight" min="0" max="200"
           step="1" value="0" name="weight">
         </md-slider>
-        <p>{{weight.value}} kg</p>
-        <label for="times">times</label>
+        <label for="weight">weight: {{weight.value}} kg</label>
         <md-slider
           class="fullwidth" #times formControlName="times" min="0" max="50"
           step="1" value="0" name="times">
         </md-slider>
-        <p>{{times.value}}</p>
+        <label for="times">times: {{times.value}}</label>
         <button type="button" (click)="addSetToService(i)" md-mini-fab color="primary">
           <i class="material-icons md-18">add</i>
         </button>

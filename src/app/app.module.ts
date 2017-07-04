@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdToolbarModule, MdButtonModule, MdInputModule, MdTabsModule, MdListModule,
-  MdCardModule, MdGridListModule, MdCheckboxModule, MdSliderModule
+  MdCardModule, MdGridListModule, MdCheckboxModule, MdSliderModule, MdChipsModule
 } from '@angular/material';
 
 import 'hammerjs';
@@ -22,6 +22,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ExcerciseComponent } from './excercises/excercise/excercise.component';
 import { NewExcerciseCreatorComponent } from './excercises/new-excercise-creator/new-excercise-creator.component';
 import { SelectorComponent } from './new-split/selector/selector.component';
+import { ChipsComponent } from './new-split/chips/chips.component';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
@@ -48,7 +49,8 @@ const routes: Route[] = [
     RegisterComponent,
     ExcerciseComponent,
     NewExcerciseCreatorComponent,
-    SelectorComponent
+    SelectorComponent,
+    ChipsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,9 +66,10 @@ const routes: Route[] = [
     MdCardModule,
     MdGridListModule,
     MdCheckboxModule,
-    MdSliderModule
+    MdSliderModule,
+    MdChipsModule
   ],
-  providers: [AuthService, AuthGuardService, ExcerciseService],
+  providers: [AuthService, AuthGuardService, ExcerciseService, SplitService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
