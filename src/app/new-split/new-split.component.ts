@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {MdSnackBar} from '@angular/material';
 
 import { SplitService } from './split.service';
 import { ExcerciseService } from '../excercises/excercise.service';
@@ -14,11 +16,14 @@ export class NewSplitComponent implements OnInit, OnDestroy {
   splitForm: FormGroup;
   excercises: Excercise[];
   formArrayHelper = [];
+  timer;
 
   constructor(
+    private router: Router,
     private excerciseService: ExcerciseService,
     private fb: FormBuilder,
-    private splitService: SplitService
+    private splitService: SplitService,
+    private snackBar: MdSnackBar
   ) {
     this.createForm();
   }
@@ -29,6 +34,7 @@ export class NewSplitComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.splitService.clearSet();
+    clearTimeout(this.timer);
   }
 
   createForm() {
@@ -72,11 +78,21 @@ export class NewSplitComponent implements OnInit, OnDestroy {
   }
 
   addSplit() {
-    this.splitService.addSplit();
-  }
+    this.splitService.addSplit().subscribe(res => {
+      if (res) {
+        this.snackBar.open('split\'ve been added', null, {
+          duration: 500,
+        });
+        this.timer = setTimeout(() => {
+          this.router.navigate(['/splits']);
+        }, 1500);
+      } else {
+        this.snackBar.open('sorry, an error occured. try later', null, {
+          duration: 2000,
+        });
+      }
+    });
 
-  log(exc) {
-    console.log(exc);
   }
 
 }

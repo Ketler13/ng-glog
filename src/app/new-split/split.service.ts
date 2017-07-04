@@ -11,13 +11,20 @@ import { Excercise } from './excercise';
 
 @Injectable()
 export class SplitService {
+  private BASE_URL = 'http://127.0.0.1:3000/api/';
+  private headers: Headers;
+  private options: RequestOptions;
   private token: string;
   private userId: string;
   chipsHandler$$: Subject<Excercise[]>;
-  excercises;
-  split;
+  excercises: Excercise[];
 
   constructor(private http: Http, private authService: AuthService) {
+    this.headers = new Headers({
+      'Content-Type': 'application/json',
+      'token': this.authService.getToken()
+    });
+    this.options = new RequestOptions({headers: this.headers});
     this.token = this.authService.getToken();
     this.userId = this.authService.getUserId();
     this.excercises = [];
@@ -66,10 +73,13 @@ export class SplitService {
     }
   }
 
-  addSplit() {
+  addSplit(): Observable<boolean> {
     const split = this.prepareSplit();
     if (split) {
-      console.log(split);
+      const url = this.BASE_URL + 'addSplit'
+      return this.http
+        .post(url, split, this.options)
+        .map(res => res.json().success ? true : false);
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { SplitService } from '../split.service';
 
@@ -7,18 +7,24 @@ import { SplitService } from '../split.service';
   templateUrl: './chips.component.html',
   styleUrls: ['./chips.component.css']
 })
-export class ChipsComponent implements OnInit {
+export class ChipsComponent implements OnInit, OnDestroy {
   public excercises: number[];
+  private handler;
 
   constructor(private ss: SplitService) {
     this.excercises = [];
   }
 
   ngOnInit() {
-    const handler = this.ss.chipsHandler$$.subscribe(this.handle.bind(this));
+    this.handler = this.ss.chipsHandler$$.subscribe(this.handle.bind(this));
+  }
+
+  ngOnDestroy() {
+    this.handler.unsubscribe();
   }
 
   handle(excercises) {
+    console.log(excercises)
     this.excercises = excercises;
   }
 

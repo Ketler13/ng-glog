@@ -24,7 +24,10 @@
           step="1" value="0" name="times">
         </md-slider>
         <label for="times">times: {{times.value}}</label>
-        <button type="button" (click)="addSetToService(i)" md-mini-fab color="primary">
+        <button
+          type="button" (click)="addSetToService(i)" md-mini-fab
+          color="primary" [disabled]="!times.value || !weight.value"
+        >
           <i class="material-icons md-18">add</i>
         </button>
       </form>
