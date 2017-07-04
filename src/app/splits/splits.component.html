@@ -1,3 +1,7 @@
 <div class="splits-component">
-  fuck me
+  <p *ngIf="!splits">...loading splits</p>
+  <p *ngIf="splits && !splits.length">you don\'t have splits yet</p>
+  <div>
+    <app-split *ngFor="let split of splits" [split]="split"></app-split>
+  </div>
 </div>

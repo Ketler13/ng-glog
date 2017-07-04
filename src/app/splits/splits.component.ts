@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { SplitService } from '../shared/services/split.service';
+import { Split } from '../shared/classes/split';
 
 @Component({
   selector: 'app-splits',
@@ -8,10 +9,15 @@ import { SplitService } from '../shared/services/split.service';
   styleUrls: ['./splits.component.css']
 })
 export class SplitsComponent implements OnInit {
+  splits: Split[];
 
-  constructor(private ss: SplitService) { }
+  constructor(private ss: SplitService) {
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.ss.loadSplits().subscribe(splits => {
+      this.splits = splits;
+    });
   }
 
 }

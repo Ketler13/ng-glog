@@ -33,7 +33,7 @@ export class NewSplitComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.splitService.clearSet();
+    this.splitService.clearSplit();
     clearTimeout(this.timer);
   }
 

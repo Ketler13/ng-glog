@@ -1,0 +1,14 @@
+<md-card>
+  <md-card-title (click)="toggleOpen()" class="split-title">{{split.date}}</md-card-title>
+  <md-card-content *ngIf="isOpen">
+    <ul>
+      <ol *ngFor="let e of split.excercises">
+        <li>
+          {{e.name}}:
+          <span *ngFor="let set of e.sets">{{set}}</span>
+        </li>
+      </ol>
+    </ul>
+    <p>rate: {{split.mark}}</p>
+  </md-card-content>
+</md-card>

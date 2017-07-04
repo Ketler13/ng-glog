@@ -8,6 +8,7 @@ import 'rxjs/add/operator/map';
 
 import { AuthService } from './auth.service';
 import { ExcerciseInSplit } from '../classes/excercise-in-split';
+import { Split } from '../classes/split';
 
 @Injectable()
 export class SplitService {
@@ -83,8 +84,14 @@ export class SplitService {
     }
   }
 
-  clearSet() {
+  clearSplit() {
     this.excercises = [];
+  }
+
+  loadSplits(): Observable<Split[]> {
+    const url = this.BASE_URL + 'splits';
+    return this.http.post(url, {user: this.userId}, this.options)
+      .map(res => res.json() as Split[]);
   }
 
 }

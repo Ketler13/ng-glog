@@ -1,6 +1,6 @@
 <div>
   <button md-button class="fullwidth" color="accent" type="button" (click)="toggleForm()">
-    {{isOpen ? 'Close form' : 'Open form'}}
+    {{isOpen ? 'Close form' : 'Create your own excercise'}}
   </button>
   <form *ngIf="isOpen" [formGroup]="newExcerciseForm" (ngSubmit)="submit()" novalidate="">
     <md-input-container class="fullwidth">
@@ -15,7 +15,7 @@
     <br>
     <p *ngIf="error" class="error">{{error}}</p>
     <button md-raised-button class="fullwidth" color="accent" type="submit" [disabled]="!allInputsFilled()">
-      Create
+      Do it
     </button>
   </form>
 </div>

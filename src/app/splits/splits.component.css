@@ -1,0 +1,6 @@
+.split-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  margin-top: 10px;
+}

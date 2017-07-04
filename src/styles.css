@@ -71,7 +71,7 @@ ul, li {
 	color: red;
 }
 
-.excercises-component, .new-split-component {
+.excercises-component, .new-split-component, .splits-component {
 	width: 80%;
-	margin: 0 auto;
+	margin: 10px auto;
 }

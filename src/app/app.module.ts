@@ -30,6 +30,7 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
 import { ExcerciseService } from './shared/services/excercise.service';
 import { SplitService } from './shared/services/split.service';
 import { ArrayToStringPipe } from './shared/pipes/array-to-string.pipe';
+import { SplitComponent } from './splits/split/split.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -53,7 +54,8 @@ const routes: Route[] = [
     NewExcerciseCreatorComponent,
     SelectorComponent,
     ChipsComponent,
-    ArrayToStringPipe
+    ArrayToStringPipe,
+    SplitComponent
   ],
   imports: [
     BrowserModule,
