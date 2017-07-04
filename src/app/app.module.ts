@@ -28,6 +28,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { ExcerciseService } from './excercises/excercise.service';
 import { SplitService } from './new-split/split.service';
+import { ArrayToStringPipe } from './new-split/array-to-string.pipe';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -50,7 +51,8 @@ const routes: Route[] = [
     ExcerciseComponent,
     NewExcerciseCreatorComponent,
     SelectorComponent,
-    ChipsComponent
+    ChipsComponent,
+    ArrayToStringPipe
   ],
   imports: [
     BrowserModule,

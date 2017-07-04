@@ -24,7 +24,7 @@ export class SplitService {
     this.chipsHandler$$ = new Subject();
   }
 
-  addSetToService(data) {
+  addSet(data) {
     const value = data.weight + 'x' + data.times;
     const set = {
       name: data.title,
@@ -47,7 +47,15 @@ export class SplitService {
     this.chipsHandler$$.next(this.excercises);
   }
 
+  removeExcercise(name: string) {
+    this.excercises = this.excercises.filter(
+      e => e.name !== name
+    )
+    this.chipsHandler$$.next(this.excercises);
+  }
+
   prepareSplit() {
+    if (!this.excercises.length) { return false }
     const now = new Date();
     const date = now.toLocaleDateString();
     return {
@@ -60,7 +68,9 @@ export class SplitService {
 
   addSplit() {
     const split = this.prepareSplit();
-    console.log(split);
+    if (split) {
+      console.log(split);
+    }
   }
 
   clearSet() {

@@ -1,5 +1,8 @@
 <div class="chip-list" >
   <md-chip-list>
-    <md-chip *ngFor="let e of excercises">{{e.name}}</md-chip>
+    <md-chip *ngFor="let e of excercises">
+      {{e.name}}: {{e.sets | arrayToString}}
+      <i class="material-icons xs" (click)="remove(e.name)">clear</i>
+    </md-chip>
   </md-chip-list>
 </div>

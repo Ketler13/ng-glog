@@ -22,4 +22,8 @@ export class ChipsComponent implements OnInit {
     this.excercises = excercises;
   }
 
+  remove(name: string): void {
+    this.ss.removeExcercise(name);
+  }
+
 }
