@@ -6,7 +6,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/filter';
 
-import { ExcerciseService } from '../excercise.service';
+import { ExcerciseService } from '../../shared/services/excercise.service';
 
 @Component({
   selector: 'app-new-excercise-creator',

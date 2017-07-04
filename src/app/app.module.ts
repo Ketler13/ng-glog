@@ -25,11 +25,11 @@ import { NewExcerciseCreatorComponent } from './excercises/new-excercise-creator
 import { SelectorComponent } from './new-split/selector/selector.component';
 import { ChipsComponent } from './new-split/chips/chips.component';
 
-import { AuthService } from './auth/auth.service';
-import { AuthGuardService } from './auth/auth-guard.service';
-import { ExcerciseService } from './excercises/excercise.service';
-import { SplitService } from './new-split/split.service';
-import { ArrayToStringPipe } from './new-split/array-to-string.pipe';
+import { AuthService } from './shared/services/auth.service';
+import { AuthGuardService } from './shared/services/auth-guard.service';
+import { ExcerciseService } from './shared/services/excercise.service';
+import { SplitService } from './shared/services/split.service';
+import { ArrayToStringPipe } from './shared/pipes/array-to-string.pipe';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},

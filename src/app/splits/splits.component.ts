@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { SplitService } from '../shared/services/split.service';
+
 @Component({
   selector: 'app-splits',
   templateUrl: './splits.component.html',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SplitsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ss: SplitService) { }
 
   ngOnInit() {
   }

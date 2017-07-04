@@ -3,9 +3,9 @@ import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MdSnackBar} from '@angular/material';
 
-import { SplitService } from './split.service';
-import { ExcerciseService } from '../excercises/excercise.service';
-import { Excercise } from '../excercises/excercise';
+import { SplitService } from '../shared/services/split.service';
+import { ExcerciseService } from '../shared/services/excercise.service';
+import { Excercise } from '../shared/classes/excercise';
 
 @Component({
   selector: 'app-new-split',

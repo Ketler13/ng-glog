@@ -4,8 +4,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import { AuthService } from '../auth/auth.service';
-import { Excercise } from './excercise';
+import { AuthService } from './auth.service';
+import { Excercise } from '../classes/excercise';
 
 @Injectable()
 export class ExcerciseService {

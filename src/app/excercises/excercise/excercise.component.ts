@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Excercise } from '../excercise';
+import { Excercise } from '../../shared/classes/excercise';
 
 @Component({
   selector: 'app-excercise',

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { SplitService } from '../split.service';
+import { SplitService } from '../../shared/services/split.service';
+import { ExcerciseInSplit } from '../../shared/classes/excercise-in-split';
 
 @Component({
   selector: 'app-chips',
@@ -8,7 +9,7 @@ import { SplitService } from '../split.service';
   styleUrls: ['./chips.component.css']
 })
 export class ChipsComponent implements OnInit, OnDestroy {
-  public excercises: number[];
+  public excercises: ExcerciseInSplit[];
   private handler;
 
   constructor(private ss: SplitService) {
@@ -24,7 +25,6 @@ export class ChipsComponent implements OnInit, OnDestroy {
   }
 
   handle(excercises) {
-    console.log(excercises)
     this.excercises = excercises;
   }
 

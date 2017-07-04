@@ -6,8 +6,8 @@ import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
 
 
-import { AuthService } from '../auth/auth.service';
-import { Excercise } from './excercise';
+import { AuthService } from './auth.service';
+import { ExcerciseInSplit } from '../classes/excercise-in-split';
 
 @Injectable()
 export class SplitService {
@@ -16,8 +16,8 @@ export class SplitService {
   private options: RequestOptions;
   private token: string;
   private userId: string;
-  chipsHandler$$: Subject<Excercise[]>;
-  excercises: Excercise[];
+  chipsHandler$$: Subject<ExcerciseInSplit[]>;
+  excercises: ExcerciseInSplit[];
 
   constructor(private http: Http, private authService: AuthService) {
     this.headers = new Headers({

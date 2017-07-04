@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Excercise } from '../../excercises/excercise';
+import { Excercise } from '../../shared/classes/excercise';
 
 @Component({
   selector: 'app-selector',
