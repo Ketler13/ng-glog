@@ -6,8 +6,10 @@ import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdToolbarModule, MdButtonModule, MdInputModule, MdTabsModule, MdListModule,
-  MdCardModule, MdGridListModule, MdCheckboxModule
+  MdCardModule, MdGridListModule, MdCheckboxModule, MdSliderModule
 } from '@angular/material';
+
+import 'hammerjs';
 
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
@@ -24,6 +26,7 @@ import { SelectorComponent } from './new-split/selector/selector.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { ExcerciseService } from './excercises/excercise.service';
+import { SplitService } from './new-split/split.service';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -60,7 +63,8 @@ const routes: Route[] = [
     MdListModule,
     MdCardModule,
     MdGridListModule,
-    MdCheckboxModule
+    MdCheckboxModule,
+    MdSliderModule
   ],
   providers: [AuthService, AuthGuardService, ExcerciseService],
   bootstrap: [AppComponent]

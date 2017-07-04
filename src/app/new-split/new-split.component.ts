@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { SplitService } from './split.service';
 import { ExcerciseService } from '../excercises/excercise.service';
 import { Excercise } from '../excercises/excercise';
 
 @Component({
   selector: 'app-new-split',
   templateUrl: './new-split.component.html',
-  styleUrls: ['./new-split.component.css']
+  styleUrls: ['./new-split.component.css'],
+  providers: [SplitService]
 })
 export class NewSplitComponent implements OnInit {
   splitForm: FormGroup;
@@ -16,7 +18,8 @@ export class NewSplitComponent implements OnInit {
 
   constructor(
     private excerciseService: ExcerciseService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private splitService: SplitService
   ) {
     this.createForm();
   }
@@ -43,19 +46,21 @@ export class NewSplitComponent implements OnInit {
   handleSet(data) {
     if (data.checked) {
       this.excercisesArray.push(this.fb.group({
-        weight: '',
-        times: '',
-        id: data.id
+        weight: 0,
+        times: 0,
+        id: data.id,
+        title: data.title
       }));
       this.formArrayHelper.push(data.id);
     } else {
       const index = this.formArrayHelper.indexOf(data.id);
+      this.formArrayHelper = this.formArrayHelper.filter((_, i) => i !== index);
       const element = this.excercisesArray.removeAt(index);
     }
   }
 
-  log() {
-    console.log(this.splitForm.value);
+  log(exc) {
+    console.log(exc);
   }
 
 }

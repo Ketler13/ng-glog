@@ -15,8 +15,8 @@ export class SelectorComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleChecking(checked, id) {
-    this.emitChecking.emit({checked, id});
+  handleChecking(checked, id, title) {
+    this.emitChecking.emit({checked, id, title});
   }
 
 }
