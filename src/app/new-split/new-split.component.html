@@ -6,16 +6,28 @@
   </app-selector>
   <div [formGroup]="splitForm">
     <div formArrayName="excercisesArray" class="form-container-flex">
-      <button md-raised-button color="accent" class="fullwidth">Add split to diary</button>
-      <form *ngFor="let excercise of excercisesArray.controls; let i=index" [formGroupName]="i" class="form-flex">
+      <button (click)="addSplit()" md-raised-button color="accent" class="fullwidth">Add split to diary</button>
+      <form
+        *ngFor="let excercise of excercisesArray.controls; let i=index"
+        [formGroupName]="i" class="form-flex"
+        novalidate
+      >
         <h3>{{excercise.value.title}}</h3>
         <label for="weight">weight</label>
-        <md-slider class="fullwidth" #weight formControlName="weight" min="0" max="200" step="1" value="0" name="weight"></md-slider>
+        <md-slider
+          class="fullwidth" #weight formControlName="weight" min="0" max="200"
+          step="1" value="0" name="weight">
+        </md-slider>
         <p>{{weight.value}} kg</p>
         <label for="times">times</label>
-        <md-slider class="fullwidth" #times formControlName="times" min="0" max="50" step="1" value="0" name="times"></md-slider>
+        <md-slider
+          class="fullwidth" #times formControlName="times" min="0" max="50"
+          step="1" value="0" name="times">
+        </md-slider>
         <p>{{times.value}}</p>
-        <button md-mini-fab color="primary"><i class="material-icons md-18">add</i></button>
+        <button type="button" (click)="addSetToService(i)" md-mini-fab color="primary">
+          <i class="material-icons md-18">add</i>
+        </button>
       </form>
     </div>
   </div>

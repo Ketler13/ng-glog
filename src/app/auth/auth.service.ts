@@ -14,8 +14,8 @@ export class AuthService {
   private headers: Headers;
   loginChecker: Subject<any>;
   isLoggedIn: boolean;
-  user: User;
-  token: string;
+  private user: User;
+  private token: string;
 
   constructor(private http: Http) {
     this.headers = new Headers({ 'Content-Type': 'application/json' });
@@ -70,6 +70,10 @@ export class AuthService {
 
   getToken() {
     return this.token;
+  }
+
+  getUserName() {
+    return this.user.name;
   }
 
 }

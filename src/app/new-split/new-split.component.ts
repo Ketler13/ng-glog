@@ -59,6 +59,19 @@ export class NewSplitComponent implements OnInit {
     }
   }
 
+  addSetToService(index) {
+    const {weight, times, title} = this.excercisesArray.at(index).value;
+    this.splitService.addSetToService({title, weight, times});
+    this.excercisesArray.at(index).patchValue({
+      weight: 0,
+      times: 0
+    });
+  }
+
+  addSplit() {
+    this.splitService.addSplit();
+  }
+
   log(exc) {
     console.log(exc);
   }
