@@ -10,10 +10,12 @@ export class SplitComponent implements OnInit {
   @Input() split: Split;
   @Output() removeSplit = new EventEmitter<string>();
   isOpen: boolean = false;
+  rate: string;
 
   constructor() { }
 
   ngOnInit() {
+    this.rate = this.split.mark;
   }
 
   toggleOpen(): void {
@@ -22,6 +24,10 @@ export class SplitComponent implements OnInit {
 
   onRemove(): void {
     this.removeSplit.emit(this.split.id);
+  }
+
+  updateRate(rate: string) {
+    this.rate = rate;
   }
 
 }

@@ -14,6 +14,7 @@
       </ol>
     </ul>
     <p>rate: {{split.mark}}</p>
-    <button (click)="onRemove()" type="button" md-raised-button color="warn">remove split</button>
+    <app-rater [rate]="rate" [id]="split.id" (newRate)="updateRate($event)"></app-rater>
+    <button (click)="onRemove()" type="button" md-button color="warn">remove split</button>
   </md-card-content>
 </md-card>

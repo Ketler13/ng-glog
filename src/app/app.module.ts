@@ -24,13 +24,15 @@ import { ExcerciseComponent } from './excercises/excercise/excercise.component';
 import { NewExcerciseCreatorComponent } from './excercises/new-excercise-creator/new-excercise-creator.component';
 import { SelectorComponent } from './new-split/selector/selector.component';
 import { ChipsComponent } from './new-split/chips/chips.component';
+import { SplitComponent } from './splits/split/split.component';
+import { RaterComponent } from './splits/rater/rater.component';
 
 import { AuthService } from './shared/services/auth.service';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { ExcerciseService } from './shared/services/excercise.service';
 import { SplitService } from './shared/services/split.service';
+
 import { ArrayToStringPipe } from './shared/pipes/array-to-string.pipe';
-import { SplitComponent } from './splits/split/split.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -55,7 +57,8 @@ const routes: Route[] = [
     SelectorComponent,
     ChipsComponent,
     ArrayToStringPipe,
-    SplitComponent
+    SplitComponent,
+    RaterComponent
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,10 @@
   <p *ngIf="!splits">...loading splits</p>
   <p *ngIf="splits && !splits.length">you don't have splits yet</p>
   <div>
-    <app-split (removeSplit)="removeSplit($event)" *ngFor="let split of splits" [split]="split"></app-split>
+    <app-split
+      *ngFor="let split of splits"
+      (removeSplit)="removeSplit($event)"
+      [split]="split">
+    </app-split>
   </div>
 </div>

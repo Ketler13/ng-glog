@@ -100,4 +100,11 @@ export class SplitService {
       .map(res => res.json().success ? true : false);
   }
 
+  setRate(id: string, rate: number): Observable<boolean> {
+    const url = this.BASE_URL + 'splits/' + id;
+    return this.http.patch(url, {rate}, this.options)
+      .map(res => res.json().success ? true : false)
+      .catch(err => Observable.of(false));
+  }
+
 }

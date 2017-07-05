@@ -1,0 +1,7 @@
+<p>
+  <span *ngFor="let _ of rateArray; let i=index">
+    <i class="material-icons star-rate" (click)="setRate(i + 1)">
+      {{(i + 1) > rateNum ? 'star_border' : 'star'}}
+    </i>
+  </span>
+</p>
