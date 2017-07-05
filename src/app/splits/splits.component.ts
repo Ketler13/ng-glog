@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import 'rxjs/add/operator/switchMap';
+
 import { SplitService } from '../shared/services/split.service';
 import { Split } from '../shared/classes/split';
 
@@ -18,6 +20,16 @@ export class SplitsComponent implements OnInit {
     this.ss.loadSplits().subscribe(splits => {
       this.splits = splits;
     });
+  }
+
+  removeSplit(id: string): void {
+    this.ss.removeSplit(id)
+      .switchMap(res => {
+        if (res) {
+          return this.ss.loadSplits();
+        }
+      })
+      .subscribe(splits => this.splits = splits);
   }
 
 }

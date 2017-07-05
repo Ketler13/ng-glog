@@ -94,4 +94,10 @@ export class SplitService {
       .map(res => res.json() as Split[]);
   }
 
+  removeSplit(id: string): Observable<boolean> {
+    const url = this.BASE_URL + 'splits/' + id;
+    return this.http.delete(url, this.options)
+      .map(res => res.json().success ? true : false);
+  }
+
 }

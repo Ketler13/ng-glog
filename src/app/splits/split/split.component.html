@@ -1,4 +1,4 @@
-<md-card>
+<md-card class="splits-item">
   <md-card-title (click)="toggleOpen()" class="split-title">{{split.date}}</md-card-title>
   <md-card-content *ngIf="isOpen">
     <ul>
@@ -10,5 +10,6 @@
       </ol>
     </ul>
     <p>rate: {{split.mark}}</p>
+    <button (click)="onRemove()" type="button" md-raised-button color="warn">remove split</button>
   </md-card-content>
 </md-card>

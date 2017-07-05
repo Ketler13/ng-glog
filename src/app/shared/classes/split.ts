@@ -5,4 +5,5 @@ export class Split {
   mark: string;
   date: string;
   user: string;
+  id?: string;
 }

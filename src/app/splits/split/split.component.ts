@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Split } from '../../shared/classes/split';
 
 @Component({
@@ -8,6 +8,7 @@ import { Split } from '../../shared/classes/split';
 })
 export class SplitComponent implements OnInit {
   @Input() split: Split;
+  @Output() removeSplit = new EventEmitter<string>();
   isOpen: boolean = false;
 
   constructor() { }
@@ -15,8 +16,12 @@ export class SplitComponent implements OnInit {
   ngOnInit() {
   }
 
-  toggleOpen() {
+  toggleOpen(): void {
     this.isOpen = !this.isOpen;
+  }
+
+  onRemove(): void {
+    this.removeSplit.emit(this.split.id);
   }
 
 }
