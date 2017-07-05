@@ -17,6 +17,7 @@ export class SplitService {
   private options: RequestOptions;
   private token: string;
   private userId: string;
+  private date: string;
   chipsHandler$$: Subject<ExcerciseInSplit[]>;
   excercises: ExcerciseInSplit[];
 
@@ -30,6 +31,10 @@ export class SplitService {
     this.userId = this.authService.getUserId();
     this.excercises = [];
     this.chipsHandler$$ = new Subject();
+  }
+
+  setDate(date: string) {
+    this.date = date;
   }
 
   addSet(data) {
@@ -65,7 +70,7 @@ export class SplitService {
   prepareSplit() {
     if (!this.excercises.length) { return false }
     const now = new Date();
-    const date = now.toLocaleDateString();
+    const date = this.date || now.toLocaleDateString();
     return {
       excercises: this.excercises,
       mark: '0',

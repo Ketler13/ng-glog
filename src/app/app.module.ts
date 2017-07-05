@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MdToolbarModule, MdButtonModule, MdInputModule, MdTabsModule, MdListModule,
   MdCardModule, MdGridListModule, MdCheckboxModule, MdSliderModule, MdChipsModule,
-  MdSnackBarModule
+  MdSnackBarModule, MdDatepickerModule, MdNativeDateModule
 } from '@angular/material';
 
 import 'hammerjs';
@@ -76,7 +76,9 @@ const routes: Route[] = [
     MdCheckboxModule,
     MdSliderModule,
     MdChipsModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdDatepickerModule,
+    MdNativeDateModule
   ],
   providers: [AuthService, AuthGuardService, ExcerciseService, SplitService],
   bootstrap: [AppComponent]

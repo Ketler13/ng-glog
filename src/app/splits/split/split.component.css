@@ -5,3 +5,7 @@
 .split-title {
   cursor: pointer;
 }
+
+.remove-button {
+  margin-left: 80%;
+}

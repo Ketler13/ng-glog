@@ -92,7 +92,10 @@ export class NewSplitComponent implements OnInit, OnDestroy {
         });
       }
     });
+  }
 
+  setTime(time) {
+    this.splitService.setDate(time.toLocaleDateString());
   }
 
 }

@@ -4,6 +4,11 @@
     (emitChecking)="handleSet($event)"
   >
   </app-selector>
+  <md-input-container>
+    <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+    <button mdSuffix [mdDatepickerToggle]="picker"></button>
+  </md-input-container>
+  <md-datepicker #picker (selectedChanged)="setTime($event)"></md-datepicker>
   <app-chips></app-chips>
   <div [formGroup]="splitForm">
     <button (click)="addSplit()" md-raised-button color="accent" class="fullwidth">Add split to diary</button>
