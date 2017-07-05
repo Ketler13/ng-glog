@@ -5,7 +5,11 @@
       <ol *ngFor="let e of split.excercises">
         <li>
           {{e.name}}:
-          <span *ngFor="let set of e.sets">{{set}}</span>
+          <md-chip-list>
+            <md-chip *ngFor="let set of e.sets">
+              {{set}}
+            </md-chip>
+          </md-chip-list>
         </li>
       </ol>
     </ul>
