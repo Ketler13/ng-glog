@@ -11,7 +11,15 @@
   <md-datepicker #picker (selectedChanged)="setTime($event)"></md-datepicker>
   <app-chips></app-chips>
   <div [formGroup]="splitForm">
-    <button (click)="addSplit()" md-raised-button color="accent" class="fullwidth">Add split to diary</button>
+    <button
+      (click)="addSplit()"
+      md-raised-button
+      color="accent"
+      class="fullwidth"
+      [disabled]="disabled"
+    >
+      Add split to diary
+    </button>
     <div formArrayName="excercisesArray" class="form-container-flex">
       <form
         *ngFor="let excercise of excercisesArray.controls; let i=index"

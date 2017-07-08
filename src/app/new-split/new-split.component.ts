@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MdSnackBar} from '@angular/material';
 
+import 'rxjs/add/operator/startWith';
+
 import { SplitService } from '../shared/services/split.service';
 import { ExcerciseService } from '../shared/services/excercise.service';
 import { Excercise } from '../shared/classes/excercise';
@@ -16,6 +18,8 @@ export class NewSplitComponent implements OnInit, OnDestroy {
   splitForm: FormGroup;
   excercises: Excercise[];
   formArrayHelper = [];
+  disabled: boolean;
+  submitHandler;
   timer;
 
   constructor(
@@ -30,11 +34,17 @@ export class NewSplitComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loadExcercises();
+    this.submitHandler = this.splitService.excercisesLength$$
+      .startWith(0)
+      .subscribe(
+      length => this.disabled = !length
+    );
   }
 
   ngOnDestroy() {
     this.splitService.clearSplit();
     clearTimeout(this.timer);
+    this.submitHandler.unsubscribe();
   }
 
   createForm() {
@@ -78,6 +88,7 @@ export class NewSplitComponent implements OnInit, OnDestroy {
   }
 
   addSplit() {
+    console.log(this.excercisesArray.length);
     this.splitService.addSplit().subscribe(res => {
       if (res) {
         this.snackBar.open('split\'ve been added', null, {

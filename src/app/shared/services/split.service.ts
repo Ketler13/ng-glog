@@ -19,6 +19,7 @@ export class SplitService {
   private userId: string;
   private date: string;
   chipsHandler$$: Subject<ExcerciseInSplit[]>;
+  excercisesLength$$: Subject<number>;
   excercises: ExcerciseInSplit[];
 
   constructor(private http: Http, private authService: AuthService) {
@@ -31,6 +32,7 @@ export class SplitService {
     this.userId = this.authService.getUserId();
     this.excercises = [];
     this.chipsHandler$$ = new Subject();
+    this.excercisesLength$$ = new Subject();
   }
 
   setDate(date: string) {
@@ -58,6 +60,7 @@ export class SplitService {
       );
     }
     this.chipsHandler$$.next(this.excercises);
+    this.excercisesLength$$.next(this.excercises.length);
   }
 
   removeExcercise(name: string) {
@@ -65,6 +68,7 @@ export class SplitService {
       e => e.name !== name
     )
     this.chipsHandler$$.next(this.excercises);
+    this.excercisesLength$$.next(this.excercises.length);
   }
 
   prepareSplit() {
