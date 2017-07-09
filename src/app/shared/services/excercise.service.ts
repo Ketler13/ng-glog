@@ -10,7 +10,7 @@ import { Excercise } from '../classes/excercise';
 @Injectable()
 export class ExcerciseService {
   private excercises: Excercise[];
-  private BASE_URL = 'http://127.0.0.1:3000/api/';
+  private BASE_URL = '/api/';
   private headers: Headers;
   private options: RequestOptions;
 

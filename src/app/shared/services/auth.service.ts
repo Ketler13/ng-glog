@@ -10,7 +10,7 @@ import { User } from '../classes/user';
 @Injectable()
 export class AuthService {
   //private BASE_URL: string = 'http://ketler-glog.herokuapp.com/api/';
-  private BASE_URL = 'http://127.0.0.1:3000/api/';
+  private BASE_URL = '/api/';
   private headers: Headers;
   loginChecker: Subject<any>;
   isLoggedIn: boolean;
@@ -61,7 +61,7 @@ export class AuthService {
       .map(res => res.json().success ? true : false);
   }
 
-  checkNameUnqique(name: string) {
+  checkNameUnique(name: string) {
     const url = this.BASE_URL + 'checkName';
     return this.http
       .post(url, {name}, this.headers)

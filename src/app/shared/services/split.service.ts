@@ -4,6 +4,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
 
 
 import { AuthService } from './auth.service';
@@ -12,7 +14,7 @@ import { Split } from '../classes/split';
 
 @Injectable()
 export class SplitService {
-  private BASE_URL = 'http://127.0.0.1:3000/api/';
+  private BASE_URL = '/api/';
   private headers: Headers;
   private options: RequestOptions;
   private token: string;

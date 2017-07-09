@@ -1,8 +1,10 @@
 import { ArrayToStringPipe } from './array-to-string.pipe';
 
 describe('ArrayToStringPipe', () => {
-  it('create an instance', () => {
+  it('check transform method', () => {
     const pipe = new ArrayToStringPipe();
-    expect(pipe).toBeTruthy();
+    const arr = ['1', '2', '3'];
+    const str = ' 1 2 3';
+    expect(pipe.transform(arr)).toBe(str);
   });
 });

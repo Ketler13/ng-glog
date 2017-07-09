@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
   createForm(): void {
     this.registerForm = this.fb.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
 
@@ -53,7 +53,7 @@ export class RegisterComponent implements OnInit {
       .debounceTime(500)
       .distinctUntilChanged()
       .filter(val => val.length)
-      .switchMap(name => this.auth.checkNameUnqique(name))
+      .switchMap(name => this.auth.checkNameUnique(name))
       .subscribe(res => {
         if (!res) {
           this.nameError = 'Name is already in use';

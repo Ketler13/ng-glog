@@ -80,6 +80,9 @@ const routes: Route[] = [
     MdDatepickerModule,
     MdNativeDateModule
   ],
+  exports: [
+    MainNavComponent
+  ],
   providers: [AuthService, AuthGuardService, ExcerciseService, SplitService],
   bootstrap: [AppComponent]
 })
